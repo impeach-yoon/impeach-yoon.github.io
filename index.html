@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내란의 힘</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .carousel {
+            display: flex;
+            width: 300vw;
+            height: 100vh;
+            transform: translateX(0);
+            transition: transform 0.3s ease-out;
+            overflow-y: auto;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow-y: auto;
+        }
+
+        .timer {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff2211;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            white-space: pre-line;
+        }
+
+        .cta-text {
+            font-size: 2.2rem;
+            line-height: 1.6;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            white-space: pre-line;
+            margin-bottom: 2rem;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .action-button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            background: #ff0000;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .action-button:hover {
+            transform: scale(1.05);
+        }
+
+        .sister-sites {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sister-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px;
+            transition: color 0.2s;
+        }
+
+        .sister-link:hover {
+            color: #ff0000;
+        }
+
+        .dots {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: white;
+        }
+
+        .gallery {
+            column-count: 5;
+            column-gap: 15px;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            height: auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: block;
+            break-inside: avoid;
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery {
+                column-count: 4;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .gallery {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery {
+                column-count: 1;
+            }
+        }
+
+        #timer-page {
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: multiply;
+        }
+
+        #cta-page {
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: multiply;
+        }
+
+        .gallery-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #33aaff;
+            text-align: center;
+        }
+        .gallery-title2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #33aaff;
+            text-align: center;
+        }
+
+        .impeached-title {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="page" id="impeached-page" style="background-image: url('./윤두환.jpg');">
+            <div class="impeached-title">IMPEACHED</div>
+        </div>
+        <div class="page" id="cta-page" style="background-image: url('./탄핵가결.jpg');">
+            <div class="cta-text">
+내란지지, 탄핵반대 정당
+국민의 힘은 이번에도
+<탄핵 반대> 당론으로 반대표 85표를 던졌습니다.
+            </div>
+            <div class="button-container">
+                <a href="https://petitions.assembly.go.kr/proceed/onGoingAll/288008C178403F22E064B49691C6967B"
+                    class="action-button">국민의힘 정당 해산 청원</a>
+                <a href="https://105th.kr/" class="action-button">내란공범 국민의힘 의원 105명 명단</a>
+                <a href="https://impeachyoon.github.io/pppsms/" class="action-button">국민의힘 국회의원들 문자보내기</a>
+            </div>
+        </div>
+        <div class="page" style="background-image: url('./맞서긴.jpg');">
+            <div class="cta-text">아직 끝나지 않았습니다</div>
+        </div>
+    </div>
+    <div class="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <script>
+
+        // Modified carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const dots = document.querySelectorAll('.dot');
+        let startX, currentX;
+        let currentPage = 0;
+        let autoRotateTimeout;
+        let pauseTimeout;
+        
+        function startAutoRotate() {
+            clearTimeout(autoRotateTimeout);
+            autoRotateTimeout = setTimeout(() => {
+                currentPage = (currentPage + 1) % 3;
+                updateCarousel();
+                startAutoRotate();
+            }, 5000);
+        }
+
+        function pauseAutoRotate() {
+            clearTimeout(autoRotateTimeout);
+            clearTimeout(pauseTimeout);
+            pauseTimeout = setTimeout(() => {
+                startAutoRotate();
+            }, 10000);
+        }
+
+        carousel.addEventListener('touchstart', handleDragStart);
+        carousel.addEventListener('touchmove', handleDragMove);
+        carousel.addEventListener('touchend', handleDragEnd);
+        carousel.addEventListener('mousedown', handleDragStart);
+        carousel.addEventListener('mousemove', handleDragMove);
+        carousel.addEventListener('mouseup', handleDragEnd);
+        carousel.addEventListener('mouseleave', handleDragEnd);
+        carousel.addEventListener('click', pauseAutoRotate);
+        carousel.addEventListener('touchstart', pauseAutoRotate);
+
+        function handleDragStart(e) {
+            startX = e.type === 'mousedown' ? e.pageX : e.touches[0].pageX;
+            currentX = startX;
+            carousel.style.transition = 'none';
+            pauseAutoRotate();
+        }
+
+        function handleDragMove(e) {
+            if (!startX) return;
+            e.preventDefault();
+            currentX = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
+            const diff = currentX - startX;
+            const newTransform = -currentPage * 100 + (diff / window.innerWidth * 100);
+            carousel.style.transform = `translateX(${newTransform}vw)`;
+        }
+
+        function handleDragEnd() {
+            if (!startX) return;
+            const diff = currentX - startX;
+            const threshold = window.innerWidth * 0.2;
+            
+            if (Math.abs(diff) > threshold) {
+                currentPage = diff > 0 ? 
+                    (currentPage - 1 + 3) % 3 : 
+                    (currentPage + 1) % 3;
+            }
+            
+            updateCarousel();
+            startX = null;
+        }
+
+        function updateCarousel() {
+            carousel.style.transition = 'transform 0.3s ease-out';
+            carousel.style.transform = `translateX(${-currentPage * 100}vw)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentPage);
+            });
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentPage = index;
+                updateCarousel();
+                pauseAutoRotate();
+            });
+        });
+
+        // Start auto-rotation
+        startAutoRotate();
+    </script>
+</body>
+</html>
